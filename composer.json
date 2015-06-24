@@ -1,0 +1,21 @@
+{
+    "name": "gufy/mailchimp",
+    "description": "Mailchimp API 3.0 for PHP",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "~5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mochamad Gufron",
+            "email": "mgufronefendi@gmail.com"
+        }
+    ],
+    "autoload":{
+      "psr-4":{
+        "Gufy\\Mailchimp\\":"src/"
+      }
+    },
+    "minimum-stability": "stable"
+}
