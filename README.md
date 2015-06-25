@@ -24,7 +24,7 @@ Then run `composer update` on your terminal
 ```php
 <?php
 use Gufy\Mailchimp\Mailchimp;
-$mailchimp =  new Mailchimp($username, $api_key);
+$mailchimp =  new Mailchimp($username, $api_key); // change $username and $api_key with your credential
 
 $lists = $mailchimp->get('lists');
 
