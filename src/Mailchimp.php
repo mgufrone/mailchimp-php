@@ -5,6 +5,7 @@ class Mailchimp
   private $api_key;
   private $username;
   private $endpoint_url;
+  private static $instance;
   public function __construct($username, $api_key)
   {
     $this->api_key = $api_key;
@@ -18,6 +19,7 @@ class Mailchimp
         'auth'=>[$this->username, $this->api_key]
       ],
     ]);
+    BaseModel::setInstance($this);
   }
   private function request($method, $url, $params=array())
   {
