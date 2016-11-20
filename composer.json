@@ -3,7 +3,7 @@
     "description": "Mailchimp API 3.0 for PHP",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "~5"
+        "guzzlehttp/guzzle": "~6"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"

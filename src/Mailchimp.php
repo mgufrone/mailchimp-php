@@ -1,5 +1,6 @@
 <?php namespace Gufy\Mailchimp;
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 class Mailchimp
 {
   private $api_key;
@@ -14,10 +15,8 @@ class Mailchimp
 
     $this->endpoint_url = end($endpoint);
     $this->client = new Client([
-      'base_url'=>'https://'.$this->endpoint_url.'.api.mailchimp.com/3.0/',
-      'defaults'=>[
-        'auth'=>[$this->username, $this->api_key]
-      ],
+      'base_uri'=>'https://'.$this->endpoint_url.'.api.mailchimp.com/3.0/',
+      'auth'=>[$this->username, $this->api_key]
     ]);
     BaseModel::setInstance($this);
   }
@@ -29,14 +28,13 @@ class Mailchimp
       $request_params = ['json'=>$params];
     }
     try{
-      $request = $this->client->createRequest($method, $url);
+      $request = new Request($method, $url);
       $response = $this->client->send($request, $request_params);
-      // $response = $request->send();
-      return $response->json();
+      return json_decode($response->getBody()->getContents(), 1);
     }
     catch(\GuzzleHttp\Exception\ClientException $e)
     {
-      return $e->getResponse()->json();
+      return json_decode($e->getResponse()->getBody()->getContents(), 1);
     }
   }
   public function get($url)
